@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, model, output } from '@angular/core';
 
 @Component({
   selector: 'app-rect',
@@ -9,8 +9,14 @@ import { Component } from '@angular/core';
 })
 export class RectComponent {
   // Todo: Implement custom two-way binding
-
+  // size = input.required<{width:string,height:string}>()
+  // sizeChange = output<{width:string,height:string}>()
+  size = model.required<{width:string,height:string}>() // it will work as two way binding with model. Available from Angualr 17
   onReset() {
-    // ...
+    // this.sizeChange.emit({
+    //   width:"200",
+    //   height:"100"
+    // })
+    this.size.set({width:'200',height:'100'})
   }
 }
